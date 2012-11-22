@@ -1,0 +1,22 @@
+Andrew Hoyle
+
+DESCRIPTION:
+	I have coded Minesweeper*, three algorithms that play it, and a way to see each algorithm's success count.  The dimensions of the board, and the mine count can be customized for heuristics.  Don't get too excited to play it yourself, because I don't have a way for users to play.  You can, however, observe the moves each algorithm makes on its journey to success or Boomtown.
+
+WHY?:
+	This was an excursion encouraged by professor Tom Altman at UC Denver while teaching Algorithms.  He noted that this an NP-Complete game.  There are many internet resources showing its comparison with the SAT problem, and some nifty ways people have recreated logic circuits with large enough grids!  It was fascinating to see that SAT clauses and circuits could be mapped onto games' boards and rules.  (I'd like to see how people create circuits using Tetris situations.)  The most recent examples I can think of are those red stone circuits on Minecraft and some of the gliding shapes in The Game of Life.
+
+RECURSION:
+	The most interesting and difficult to create portion was how the tiles reveal their numbers if an adjacent tile with the value “0“ is clicked on.  (This function is nested inside the Board class.)  The function essentially wanders around in a clockwise fashion and calls itself recursively if another tile with 0 is found, then it moves one step in that direction.
+
+HOW TO USE:
+	This program essentially lets you customize the board’s dimensions and mine count, randomly create some, and then run the algorithms on them.  See the main file’s comments to change some of the variables.  The game is played on the terminal, and then the results are appended to an outfile that is created.  I’d recommend piping the game into another file for step-by-step analysis of the algorithms’ moves.  Before and after each game, the board is shown without any masking, so you can see that the flags were placed in the correct place up until a victory or untimely death!
+
+	How to run:
+	1) go in the folder and compile: g++ *.cpp
+	2) ./a.out	OR	./a.out >> file_to_hold_the_moves
+
+	Please feel free to explore this code.  I’ve posted it to show my competence with C++ by using stl containers, classes, and function pointers.  I’ve also included my final report on this topic for the algorithms class that further explains the three algorithms’ attempts at minimizing risk while selecting tiles.  The first one just randomly picks at will, the second calculates risk percentages and picks the least risky tiles, and the third one looks at two tiles at a time and compares their overlapping space for mine placement guarantees before guessing.
+
+*The main difference in this game’s logic is that the real Minesweeper does not allow you to die on the first click, whereas this one does.  This obviously has a huge effect on success heuristics when the mine-to-tiles ratio increases.
+
